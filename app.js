@@ -43,7 +43,7 @@ app.post("/items", uniqueItemMiddleWare, function (req, res) {
   const item = req.body;
   item.id = list.length+1;
   list.push(req.body);
-  res.status(201).json({
+  res.json({
     status: 201,
     message: "Post created",
     data: item,
@@ -55,7 +55,7 @@ app.get("/items/:id", function (req, res) {
     return item.id === parseInt(req.params.id);
   });
   if (found) {
-    res.status(200).json({
+    res.json({
       status: 200,
       message: "Item found",
       data: found,
